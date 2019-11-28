@@ -1,202 +1,206 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="user-scalable=no" />
-    <title>原因の究明</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <style>
-      .img-flex-3 img {
-        width: 32%;
-        margin: 0.5em 0.2em 0.5em;
-      }
 
-      ​ .img-flex-4 img {
-        width: 24%;
-        margin: 0.5em 0.2em 0.5em;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="user-scalable=no">
+  <title>原因の究明</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <style>
+    .img-flex-3 img {
+      width: 32%;
+      margin: 0.5em 0.2em 0.5em;
+    }
 
-      ​ .hyoji {
-        float: left;
-        width: 90%;
-        height: 200px;
-        background-color: #ccc;
-        margin: 0.5em 0 0.5em;
-        font-size: 3em;
-        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-      }
+    .img-flex-4 img {
+      width: 24%;
+      margin: 0.5em 0.1em 0.5em;
+    }
 
-      .btn {
-        width: 100%;
-        height: 100px;
-        font-size: 3em;
-        margin: 0.5em 0 0.5em;
-        font-family: monospace;
-      }
+    .hyoji {
+      float: left;
+      width: 90%;
+      height: 200px;
+      background-color: #ccc;
+      margin: 0.5em 0 0.5em;
+      font-size: 3em;
+      font-family: monospace;
+    }
 
-      ​ .private_card.selected {
-        border: 10px solid #f90;
-      }
 
-      ​ .viral_card.selected {
-        border: 10px solid #f90;
-      }
-    </style>
-  </head>
+    .btn {
+      width: 100%;
+      height: 100px;
+      font-size: 3em;
+      margin: 0.5em 0 0.5em;
+      font-family: monospace;
+    }
 
-  <body>
-    <div class="container-fluid">
-      <div id="truth_container">
-        <div class="row">
-          <div id="truth_private_container" class="col-sm">
-            <div class="hyoji">
-              個人カード
-              <div class="status">未登録</div>
-            </div>
-          </div>
-          <div id="truth_viral_container" class="col-sm">
-            <div class="hyoji">
-              バイラルカード
-              <div class="status">未登録</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--private start-->
+    .private_card.selected {
+      border: 10px solid #f90;
+    }
 
-      <div class="img-flex-3">
-        <!-- <div class="overlay"><img src="images/private_1.png" class="private_card" /></div> -->
-        <img src="images/private_1.png" class="private_card" />
-        <img src="images/private_2.png" class="private_card" />
-        <img src="images/private_3.png" class="private_card" />
-      </div>
-      <div class="img-flex-3">
-        <img src="images/private_4.png" class="private_card" />
-        <img src="images/private_5.png" class="private_card" />
-        <img src="images/private_6.png" class="private_card" />
-      </div>
-      <div class="img-flex-3">
-        <img src="images/private_7.png" class="private_card" />
-        <img src="images/private_8.png" class="private_card" />
-        <img src="images/private_9.png" class="private_card" />
-      </div>
-      <div class="img-flex-3">
-        <img src="images/private_10.png" class="private_card" />
-        <img src="images/private_11.png" class="private_card" />
-        <img src="images/private_12.png" class="private_card" />
-      </div>
-      <!--private end-->
-      ​
-      <!--viral start-->
-      <div class="img-flex-4">
-        <img src="images/viral_1.png" class="viral_card" />
-        <img src="images/viral_2.png" class="viral_card" />
-        <img src="images/viral_3.png" class="viral_card" />
-        <img src="images/viral_4.png" class="viral_card" />
-      </div>
-      ​
-      <!--viral end-->
-      ​
-      <!--btn start-->
+    .viral_card.selected {
+      border: 10px solid #f90;
+    }
+  </style>
+</head>
 
+<body>
+  <div class="container-fluid">
+    <div id="truth_container">
       <div class="row">
-        <div class="col-sm">
-          <button type="button" class="btn btn-primary">究明する！</button>
+        <div id="truth_private_container" class="col-sm">
+          <div class="hyoji">
+            個人カード
+            <div class="status">未登録</div>
+          </div>
+        </div>
+        <div id="truth_viral_container" class="col-sm">
+          <div class="hyoji">
+            バイラルカード
+            <div class="status">未登録</div>
+          </div>
         </div>
       </div>
-      <!--btn end-->
-      ​
-      <!-- .container end-->
     </div>
-    ​
-  </body>
-  <script>
-      $(function () {
-        ​
-        /*
-         * カード登録処理
-         */
-        // URLに紐づいたパラメータを取得
-        // 'kojin'というパラメータの値を取得する
-        const kojinValue = getParam("kojin");
-        // 上で保存した、kojinというキーでcookieに保存
-        if (kojinValue != null) {
-          $.cookie("kojin", kojinValue);
-        }​
-        const viralValue = getParam("viral");
-        if (viralValue != null) {
-          $.cookie("viral", viralValue);
-        }​​​​
+    <!--private start-->
 
-        // 正解の個人カードとバイラルカードが登録されているか判定
-        if ($.cookie("kojin")) {
-          $("#truth_private_container .status").html("登録済み");
-        }
-        if ($.cookie("viral")) {
-          $("#truth_viral_container .status").html("登録済み");
-        }​
-        let kojin_selected, viral_selected;​
+    <div class="img-flex-3">
+      <img src="image/private_1.png" class="private_card">
+      <img src="image/private_2.png" class="private_card">
+      <img src="image/private_3.png" class="private_card">
+    </div>
+    <div class="img-flex-3">
+      <img src="image/private_4.png" class="private_card">
+      <img src="image/private_5.png" class="private_card">
+      <img src="image/private_6.png" class="private_card">
+    </div>
+    <div class="img-flex-3">
+      <img src="image/private_7.png" class="private_card">
+      <img src="image/private_8.png" class="private_card">
+      <img src="image/private_9.png" class="private_card">
+    </div>
+    <div class="img-flex-3">
+      <img src="image/private_10.png" class="private_card">
+      <img src="image/private_11.png" class="private_card">
+      <img src="image/private_12.png" class="private_card">
+    </div>
+    <!--private end-->
 
-        // 個人カードの選択したものを判定
-        $(".img-flex-3 .private_card").on("click", function () {
-          kojin_selected = $(".img-flex-3 .private_card").index(this);
-          $(".img-flex-3 .private_card").removeClass("selected");
-          $(this).addClass('selected');
-          console.log(kojin_selected);
-          //以下画像の色を変える処理 yuki write
-    //       $(document).ready(function() {
-    //     $('.overlay').colorOverlay({
-    //         bgColor : '#000',
-    //         opacity : 0.5
-    //     });
-    // });
-        });​
+    <!--viral start-->
+    <div class="img-flex-4">
+      <img src="image/viral_1.png" class="viral_card">
+      <img src="image/viral_2.png" class="viral_card">
+      <img src="image/viral_3.png" class="viral_card">
+      <img src="image/viral_4.png" class="viral_card">
+    </div>
 
-        // バイラルカードの選択したものを判定
-        $(".img-flex-4 .viral_card").on("click", function () {
-          viral_selected = $(".img-flex-4 .viral_card").index(this);
-          $(".img-flex-4 .viral_card").removeClass("selected");
-          $(this).addClass('selected');
-          console.log(viral_selected);
-        });​
+    <!--viral end-->
 
-        //id属性の場合、属性値(名前)の前に「#」(シャープ)をつけることで、CSSを指定できます。
-        //class属性の場合、 属性値(名前)の前に「.」(ドット)をつけることで、CSSを指定できます。
-        // 判定とリセット処理
-        $(".btn").on("click", function () {
-          if (kojin_selected == $.cookie("kojin") && viral_selected == $.cookie("viral")) {
-            alert('Congraturations!');
-            location.href = "congrats.html";
-            $.removeCookie("kojin");
-            $.removeCookie("viral");
-          } else {
-            alert('false');
-          }
-        });​
+    <!--btn start-->
 
-        //QR??
-        function getParam(name, url) {
-          if (!url) url = window.location.href;​
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return "";
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    <div class="row">
+      <div class="col-sm">
+        <button type="button" class="btn btn-primary">究明する！</button>
+      </div>
+    </div>
+    <!--btn end-->
 
-        //yuki write
-        //選択したカードを保存する
-        //memo:判定処理部分で判定したカードを保存して別個の処理でカードの色を白黒に変更する処理を施す
-        //memo:↑は背景色変える処理だけでいける？
-        //memo:正解した場合は別のファイルに飛ばす
-      });
-  </script>
+    <!-- .container end-->
+  </div>
+
+
+</body>
+<script>
+  $(function () {
+
+
+
+    /*
+     * カード登録処理
+     */
+    // URLに紐づいたパラメータを取得
+    // 'kojin'というパラメータの値を取得する
+    const kojinValue = getParam("kojin");
+    // 上を保存した、kojinというキーでcookieに保存
+    if (kojinValue != null) {
+      $.cookie("kojin", kojinValue);
+    }
+
+    const viralValue = getParam("viral");
+    if (viralValue != null) {
+      $.cookie("viral", viralValue);
+    }
+
+
+
+
+    // 正解の個人カードとバイラルカードが登録されているか判定
+    if ($.cookie("kojin")) {
+      $("#truth_private_container .status").html("登録済み");
+    }
+    if ($.cookie("viral")) {
+      $("#truth_viral_container .status").html("登録済み");
+    }
+
+    let kojin_selected, viral_selected;
+
+    // 個人の選択したものを判定
+    $(".img-flex-3 .private_card").on("click", function () {
+      kojin_selected = $(".img-flex-3 .private_card").index(this);
+      $(".img-flex-3 .private_card").removeClass("selected");
+      $(this).addClass('selected');
+      console.log(kojin_selected);
+    });
+
+    // バイラルの選択したものを判定
+    $(".img-flex-4 .viral_card").on("click", function () {
+      viral_selected = $(".img-flex-4 .viral_card").index(this);
+      $(".img-flex-4 .viral_card").removeClass("selected");
+      $(this).addClass('selected');
+      console.log(viral_selected);
+    });
+
+
+    //id属性の場合、属性値(名前)の前に「#」(シャープ)をつけることで、CSSを指定できます。
+    //class属性の場合、 属性値(名前)の前に「.」(ドット)をつけることで、CSSを指定できます。
+    // 判定とリセット処理
+    $(".btn").on("click", function () {
+      if (kojin_selected == $.cookie("kojin") && viral_selected == $.cookie("viral")) {
+        alert('Congraturations!');
+        location.href = "congrats.html";
+        $.removeCookie("kojin");
+        $.removeCookie("viral");
+      } else {
+        alert('false');
+
+      }
+    });
+
+    function getParam(name, url) {
+      if (!url) url = window.location.href;
+
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return "";
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+
+    //yuki write
+    //選択したカードを保存する
+    //memo:判定処理部分で判定したカードを保存して別個の処理でカードの色を白黒に変更する処理を施す
+    //memo:↑は背景色変える処理だけでいける？
+    //memo:正解した場合は別のファイルに飛ばす
+
+
+  });
+</script>
+
 </html>
