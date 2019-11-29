@@ -28,7 +28,7 @@ $(function () {
   let kojin_selected, viral_selected;
 
   // add yuki
-  let sel_vcNum;
+  let sel_koNum, sel_vcNum;
   // /add yuki
 
   // 個人の選択したものを判定
@@ -37,6 +37,9 @@ $(function () {
     $(".img-flex-3 .private_card").removeClass("selected");
     $(this).addClass('selected');
     console.log(kojin_selected);
+    // add yuki
+    sel_koNum = $(this).attr("id");
+    console.log(sel_koNum);
   });
 
   // バイラルの選択したものを判定
@@ -73,12 +76,12 @@ $(function () {
     // });
     // /add yuki
     if (kojin_selected == $.cookie("kojin") && viral_selected == $.cookie("viral")) {
-      alert('Congraturations!');
+      // alert('Congraturations!');
       location.href = "congrats.html";
       $.removeCookie("kojin");
       $.removeCookie("viral");
     } else {
-      alert('false');
+      alert('犯人ではありませんでした');
       // add yuki
       //$('#' + sel_vir).removeAttr("id");
       // $('#' + sel_vcNum).attr('src', 'images/viral_none.png');
@@ -114,6 +117,12 @@ $(function () {
     // });
     $(".private_card").on("click", function () {
       $(this).nextAll('.img-flex-4:first').slideToggle();
+      // $(this).nextAll('.img-flex-4:first').toggle();
+      // not(this).('.img-flex-4').slideUp();
+      // not('#' + sel_koNum,'.img-flex-4').slideUp();
+      $('.img-flex-3 .private_card').not($(this)).next('.img-flex-4').slideUp();
+      //↑クリックされた.private_card以外の.private_cardに隣接する.img-flex-4を閉じる
+      // not(this).(".img-flex-4").slideUp();
     });
   });
 
