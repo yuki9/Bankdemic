@@ -40,7 +40,7 @@ $(function () {
   });
 
   // バイラルの選択したものを判定
-  $(".img-flex-4 .viral_card").on("click", function select_viral() {
+  $(".img-flex-4 .viral_card").on("click", function () {
     viral_selected = $(".img-flex-4 .viral_card").index(this);
     $(".img-flex-4 .viral_card").removeClass("selected");
     $(this).addClass('selected');
