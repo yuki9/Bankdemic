@@ -27,6 +27,10 @@ $(function () {
 
   let kojin_selected, viral_selected;
 
+  // add yuki
+  let sel_vcNum;
+  // /add yuki
+
   // 個人の選択したものを判定
   $(".img-flex-3 .private_card").on("click", function () {
     kojin_selected = $(".img-flex-3 .private_card").index(this);
@@ -53,6 +57,8 @@ $(function () {
     // $('.img-flex-4').children('img').attr('src', src); //書き換えたsrcをimgタグに設定する
     //$(this).attr('src', 'images/viral_none.png');
     //$('images/viral_none.png').attr('src', this)
+    sel_vcNum = $(this).attr("id");
+    console.log(sel_vcNum);
   });
 
 
@@ -62,7 +68,8 @@ $(function () {
   $(".btn").on("click", function () {
     //add yuki
     // $(function () {
-    //   $(select_viral()).viral_selected.attr('src', 'images/viral_none.png');
+    //   //   $(select_viral()).viral_selected.attr('src', 'images/viral_none.png');
+    //   $(sel_vir).removeAttr('class');
     // });
     // /add yuki
     if (kojin_selected == $.cookie("kojin") && viral_selected == $.cookie("viral")) {
@@ -72,6 +79,10 @@ $(function () {
       $.removeCookie("viral");
     } else {
       alert('false');
+      // add yuki
+      //$('#' + sel_vir).removeAttr("id");
+      $('#' + sel_vir).attr('src', 'images/viral_none.png');
+      //console.log(sel_vir); //これは問題ない
     }
   });
 
