@@ -81,7 +81,9 @@ $(function () {
       alert('false');
       // add yuki
       //$('#' + sel_vir).removeAttr("id");
-      $('#' + sel_vir).attr('src', 'images/viral_none.png');
+      // $('#' + sel_vcNum).attr('src', 'images/viral_none.png');
+      //選択したバイラルカードのimgタグを削除
+      $('#' + sel_vcNum).remove();
       //console.log(sel_vir); //これは問題ない
     }
   });
