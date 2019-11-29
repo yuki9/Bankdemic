@@ -10,16 +10,28 @@
   margin: 0.5em 0.1em 0.5em;
 }
 
+/* 登録カード部分 */
 .hyoji {
   float: left;
   width: 90%;
   height: 200px;
-  background-color: #ccc;
+  background-color: #EFEFEF;
   margin: 0.5em 0 0.5em;
   font-size: 3em;
   font-family: monospace;
+  text-align: center;
 }
 
+.truth_private_container {
+  border: 10px solid #13AE67;
+  border-radius: 10px;
+}
+
+.truth_viral_container {
+  border: 10px solid #D70051;
+  border-radius: 10px;
+  ;
+}
 
 .btn {
   width: 100%;
