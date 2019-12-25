@@ -54,10 +54,7 @@ $(function() {
       // $(this).nextAll('.img-flex-4:first').toggle();
       // not(this).('.img-flex-4').slideUp();
       // not('#' + sel_koNum,'.img-flex-4').slideUp();
-      $(".img-flex-3 .private_card")
-        .not($(this))
-        .next(".img-flex-4")
-        .slideUp();
+      $(".img-flex-3 .private_card").not($(this)).next(".img-flex-4").slideUp();
       //↑クリックされた.private_card以外の.private_cardに隣接する.img-flex-4を閉じる
       // not(this).(".img-flex-4").slideUp();
       //バイラルカードを選択した状態で別の個人カードを選択した場合は.sekectedを削除
@@ -77,8 +74,23 @@ $(function() {
   });
 
   // バイラルの選択したものを判定
-  $(".img-flex-4 .viral_card").on("click", function() {
+  $(".img-flex-4 .viral_card").on("click", function () {
     viral_selected = $(".img-flex-4 .viral_card").index(this);
+    //add yuki
+    //viral_selected = $(".img-flex-3 > .img-flex-4 > span > img").index(this);
+    // /add yuki
+    
+    //indexの数字を調整する処理
+    // if (viral_selected < 5) {
+    //   viral_selected - 4
+    // }
+    // /indexの
+    // if (viral_selected >= 4) {
+    //   // console.log("テストテスト")
+    //   viral_selected -= 4 * kojin_selected
+    // }
+    viral_selected -= 4 * kojin_selected
+
     $(".img-flex-4 .viral_card").removeClass("selected");
     $(this).addClass("selected");
     console.log(viral_selected);
